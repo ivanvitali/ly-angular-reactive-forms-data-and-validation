@@ -28,7 +28,7 @@
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.41",
     "del": "2.2.1",
-    "gulp": "3.9.1",
+    "gulp": "^3.9.1",
     "gulp-sourcemaps": "1.6.0",
     "gulp-typescript": "3.0.2",
     "gulp-webserver": "0.9.1",
