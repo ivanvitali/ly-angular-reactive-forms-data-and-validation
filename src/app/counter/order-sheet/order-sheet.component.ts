@@ -18,6 +18,7 @@ export class OrderSheetComponent implements OnInit {
 
   orderSheetForm: FormGroup;
   weirdRequestsControls: FormArray;
+  showWelcomeMessage = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.buildOrderSheetForm();
@@ -55,6 +56,13 @@ export class OrderSheetComponent implements OnInit {
     });
 
     this.weirdRequestsControls = this.orderSheetForm.get('weirdRequests') as FormArray;
+    
+    this.orderSheetForm
+      .get('customerName')
+      .valueChanges
+      .subscribe((value) => {
+        this.showWelcomeMessage = value && value.toLowerCase().trim() === 'jampi';
+      });
   }
 
   onAddWeirdRequest() {

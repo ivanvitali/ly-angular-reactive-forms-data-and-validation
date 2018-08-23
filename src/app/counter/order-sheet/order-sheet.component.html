@@ -16,8 +16,10 @@
         Must be at least {{customerNameControl.errors.minlength.requiredLength}} letters
       </div>
     </div> -->
-    <div class="welcome-back" *ngIf="showWelcomeMessage">
-      Welcome back {{customerNameControl.value}}
+    <div 
+      class="welcome-back" 
+      *ngIf="showWelcomeMessage">
+      Hola {{ orderSheetForm.get('customerName').value }}! Deja de espiar mis estados, por vafor. Tu amigaaa, Mai.
     </div>
   </section>
   <section class="size">
