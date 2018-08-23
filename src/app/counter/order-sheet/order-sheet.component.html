@@ -1,7 +1,13 @@
 <h2>Order Sheet</h2>
-<form novalidate [formGroup]="orderSheetForm" (ngSubmit)="onSubmitForm()">
+<form 
+  novalidate 
+  [formGroup]="orderSheetForm" 
+  (ngSubmit)="onSubmitForm()">
   <section class="customer-name">
-    <input formControlName="customerName" type="text" placeholder="Your Name">
+    <input 
+      formControlName="customerName" 
+      type="text" 
+      placeholder="Your Name">
     <div *ngIf="customerNameControl.errors" class="errors">
       <div *ngIf="customerNameControl.errors.required && (customerNameControl.touched || customerNameControl.dirty)">
         Required!
@@ -18,11 +24,21 @@
     <h1>Pick your size</h1>
     <ul>
       <li>
-        <input id="sizeSmall" type="radio" formControlName="size" value="small">
+        <input 
+          id="sizeSmall" 
+          type="radio" 
+          formControlName="size" 
+          value="small"
+          name="size">
         <label for="sizeSmall">Small</label>
       </li>
       <li>
-        <input id="sizeLarge" type="radio" formControlName="size" value="large">
+        <input 
+          id="sizeLarge" 
+          type="radio" 
+          formControlName="size" 
+          value="large"
+          name="size">
         <label for="sizeLarge">Large</label>
       </li>
     </ul>
@@ -37,7 +53,8 @@
       <option value="Cali Cheesesteak">Cali Cheesesteak</option>
     </select>
   </section>
-  <section *ngIf="!orderSheetForm.get('specialtySandwich').value" class="build-your-own">
+  <section 
+    class="build-your-own">
     <h1>Build Your Own</h1>
     <section>
       <h1>A Bread</h1>
