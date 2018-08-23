@@ -54,7 +54,11 @@ export class OrderSheetComponent implements OnInit {
         veggieTomato: '',
         veggieMustard: ''
       })
-    });
+    },
+    {
+      validator: CustomValidators.requiredWhen('bread','specialtySandwich')
+    }
+    );
 
     this.weirdRequestsControls = this.orderSheetForm.get('weirdRequests') as FormArray;
     this.customerNameControl = this.orderSheetForm.get('customerName') as FormControl;
