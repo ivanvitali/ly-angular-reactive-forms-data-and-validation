@@ -30,7 +30,7 @@ export class OrderSheetComponent implements OnInit {
   buildOrderSheetForm() {
     this.orderSheetForm = this.formBuilder.group({
       customerName: '',
-      size: this.formBuilder.control(''),
+      size: '',
       bread: '',
       specialtySandwich: '',
       weirdRequests: this.formBuilder.array([
@@ -38,7 +38,7 @@ export class OrderSheetComponent implements OnInit {
       ]),
       otherNotes: '',
       meats: this.formBuilder.group({
-        meatHam: '',
+        meatHam: false,
         meatTurkey: '',
         meatRoastBeef: ''
       }),
@@ -66,11 +66,17 @@ export class OrderSheetComponent implements OnInit {
   }
 
   onResetForm() {
-    this.orderSheetForm.reset();
+    // this.orderSheetForm.reset();
+    this.orderSheetForm.get('customerName').reset();
+    
   }
 
   onResetWeirdRequests() {
     this.weirdRequestsControls.reset();
+  }
+
+  onSubmitForm() {
+    console.log(this.orderSheetForm.value);
   }
 
 }

@@ -8,14 +8,14 @@
       formControlName="customerName" 
       type="text" 
       placeholder="Your Name">
-    <div *ngIf="customerNameControl.errors" class="errors">
+    <!-- <div *ngIf="customerNameControl.errors" class="errors">
       <div *ngIf="customerNameControl.errors.required && (customerNameControl.touched || customerNameControl.dirty)">
         Required!
       </div>
       <div *ngIf="customerNameControl.errors.minlength">
         Must be at least {{customerNameControl.errors.minlength.requiredLength}} letters
       </div>
-    </div>
+    </div> -->
     <div class="welcome-back" *ngIf="showWelcomeMessage">
       Welcome back {{customerNameControl.value}}
     </div>
@@ -54,6 +54,7 @@
     </select>
   </section>
   <section 
+    *ngIf="!orderSheetForm.get('specialtySandwich').value"
     class="build-your-own">
     <h1>Build Your Own</h1>
     <section>
@@ -147,4 +148,6 @@
   <button type="submit" [disabled]="!orderSheetForm.valid">Place Order</button>
   <button type="button" (click)="onResetForm()">Reset</button>
 </form>
+
+<p>{{ orderSheetForm.value | json }}</p>
 <debug-panel [data]="orderSheetForm.value"></debug-panel>
