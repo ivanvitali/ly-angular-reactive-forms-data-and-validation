@@ -19,18 +19,19 @@ export class OrderSheetComponent implements OnInit {
   orderSheetForm: FormGroup;
   weirdRequestsControls: FormArray;
   showWelcomeMessage = false;
+  customerNameControl;
 
   constructor(private formBuilder: FormBuilder) {
     this.buildOrderSheetForm();
   }
 
-  ngOnInit() {
-    let customerNameControl = this.orderSheetForm.get('customerName') as FormControl;
-  }
+  ngOnInit() {}
   
   buildOrderSheetForm() {
     this.orderSheetForm = this.formBuilder.group({
-      customerName: '',
+      customerName: ['', 
+        [Validators.required, 
+        Validators.minLength(3)]],
       size: '',
       bread: '',
       specialtySandwich: '',
@@ -56,9 +57,9 @@ export class OrderSheetComponent implements OnInit {
     });
 
     this.weirdRequestsControls = this.orderSheetForm.get('weirdRequests') as FormArray;
+    this.customerNameControl = this.orderSheetForm.get('customerName') as FormControl;
     
-    this.orderSheetForm
-      .get('customerName')
+    this.customerNameControl
       .valueChanges
       .subscribe((value) => {
         this.showWelcomeMessage = value && value.toLowerCase().trim() === 'jampi';
